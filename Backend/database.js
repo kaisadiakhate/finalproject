@@ -34,20 +34,17 @@ async function readFoodId(foodid) {
   }
 }
 
-/*
-async function createFood(foodname) {
-  console.log(foodname);
-  let today = new Date();
+async function createFood(meal) {
   await pool.query(
-    `INSERT INTO meals () VALUES ($1, $2, $3, $4, $5, $6)`,
-    [
-      meals.
-      today.toISOString(),
-      meals.,
-      meals.,
-    ]
+    `with current_meal as (insert into meals (meal_name)
+      VALUES ($1)
+      returning meal_id
+      )
+      insert into meal_contents (meal_id, foodid, amount)
+      VALUES
+          ((select meal_id from current_meal), $2, $3)`,
+    [meal.meal_name, meal.foodid, meal.amount]
   );
 }
-*/
 
-module.exports = { readFoods, readFoodId };
+module.exports = { readFoods, readFoodId, createFood };
