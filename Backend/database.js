@@ -24,11 +24,11 @@ async function readFoods() {
 
 async function readFoodId(foodid) {
   try {
-    const res = await pool.query(`SELECT * FROM foods WHERE foodid=$1`, [
-      foodid,
-    ]);
-    console.log(res.rows);
-    return res;
+    const res = await pool.query(
+      `SELECT foods.foodid, foodname,eufdname,bestloc from foods join foodnutrientvalues on foodnutrientvalues.foodid = foods.foodid where foods.foodid = $1 and (eufdname = 'ENERC' or eufdname = 'FAT' or eufdname = 'CHOAVL' or eufdname = 'PROT' or eufdname = 'SUGAR')`,
+      [foodid]
+    );
+    return res.rows;
   } catch (err) {
     console.log(err?.stack);
   }
