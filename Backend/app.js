@@ -2,7 +2,13 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 3000;
-const { readFoods, readFoodId, createFood, readDiary } = require("./database");
+const {
+  readFoods,
+  readFoodId,
+  createFood,
+  readDiary,
+  deleteMeal,
+} = require("./database");
 
 app.use(cors());
 app.use(express.json());
@@ -36,6 +42,11 @@ app.get("/diary", async (req, res) => {
   } catch (err) {
     console.log(err?.stack);
   }
+});
+
+app.delete("/diary/:meal_id", async (req, res) => {
+  await deleteMeal(req.params.meal_id);
+  res.sendStatus(200);
 });
 
 app.listen(port, () => {
