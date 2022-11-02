@@ -68,4 +68,9 @@ async function readDiary() {
   }
 }
 
-module.exports = { readFoods, readFoodId, createFood, readDiary };
+async function deleteMeal(mealid) {
+  await pool.query(`DELETE FROM meals WHERE meal_id = $1`, [mealid]);
+  return;
+}
+
+module.exports = { readFoods, readFoodId, createFood, readDiary, deleteMeal };
