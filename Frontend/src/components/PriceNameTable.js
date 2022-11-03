@@ -14,8 +14,10 @@ export default function BasicTable(props) {
         <TableHead>
           <TableRow>
             <TableCell>Foodname (100g serving)</TableCell>
-            <TableCell align="right">eufdname</TableCell>
-            <TableCell align="right">besloc&nbsp;(g)</TableCell>
+            <TableCell align="right">Kokonaisenergia(kJ)</TableCell>
+            <TableCell align="right">Proteiini(g)</TableCell>
+            <TableCell align="right">Hiilarit(g)</TableCell>
+            <TableCell align="right">Rasva(g)</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -27,8 +29,10 @@ export default function BasicTable(props) {
               <TableCell component="th" scope="row">
                 {row.foodname}
               </TableCell>
-              <TableCell align="right">{row.ufdname}</TableCell>
-              <TableCell align="right">{row.besloc}</TableCell>
+              <TableCell align="right">{row.ENERC}</TableCell>
+              <TableCell align="right">{row.PROT}</TableCell>
+              <TableCell align="right">{row.CHOAVL}</TableCell>
+              <TableCell align="right">{row.FAT}</TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -13,9 +13,21 @@ const pool = new Pool({
 async function readFoods() {
   try {
     const res = await pool.query(
-      `SELECT foods.foodid, foodname,eufdname,bestloc 
-       from foods join foodnutrientvalues on foodnutrientvalues.foodid = foods.foodid 
-       where eufdname = 'ENERC' or eufdname = 'FAT' or eufdname = 'CHOAVL' or eufdname = 'PROT' or eufdname = 'SUGAR' order by foodname`
+      `select
+        foodname,
+        foodnutrientvalues.foodid,
+        MAX(bestloc) FILTER (WHERE eufdname = 'ENERC') AS "ENERC",
+        MAX(bestloc) FILTER (WHERE eufdname = 'PROT') AS "PROT",
+        MAX(bestloc) FILTER (WHERE eufdname = 'CHOAVL') AS "CHOAVL",
+        MAX(bestloc) FILTER (WHERE eufdname = 'FAT') AS "FAT"
+      FROM foodnutrientvalues
+      JOIN
+        foods on foods.foodid = foodnutrientvalues.foodid
+      GROUP BY
+        foodnutrientvalues.foodid,
+        foods.foodname
+      ORDER BY
+        foodid;`
     );
     console.log("OK:", res.rows[0]);
     return res.rows;
