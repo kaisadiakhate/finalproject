@@ -10,7 +10,7 @@ export default function FoodsPage() {
         return response.json();
       })
       .then((data) => {
-        setFoods(data);
+        setFoods(data.data);
         console.log("Data from api:", data);
       });
   };
