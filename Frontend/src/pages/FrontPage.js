@@ -17,9 +17,5 @@ export default function FrontPage() {
     fetchData();
   }, []);
 
-  return (
-    <div>
-      Hello front page! { dashboard.dailyCalorieCount }
-    </div>
-  );
+  return <div>Hello front page! {dashboard.dailyCalorieCount}</div>;
 }

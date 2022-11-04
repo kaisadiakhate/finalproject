@@ -36,7 +36,7 @@ app.post("/meals", async (req, res) => {
 
 app.get("/meals", async (req, res) => {
   try {
-    const diary = await readDiary();
+    const meal = await readDiary();
     const response = { data: diary };
     res.send(response);
   } catch (err) {
