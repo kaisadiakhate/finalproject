@@ -5,7 +5,6 @@ import SearchBar from "../components/SearchBar";
 export default function FoodsPage() {
   const [data, setFoods] = useState([]);
   const fetchData = (search) => {
-    console.log(search);
     fetch(
       "http://localhost:4000/foods?" +
         new URLSearchParams({

@@ -14,6 +14,7 @@ const {
 app.use(cors());
 app.use(express.json());
 
+/*
 app.get("/foods", async (req, res) => {
   try {
     const food = await readFoods();
@@ -23,14 +24,15 @@ app.get("/foods", async (req, res) => {
     console.log(err?.stack);
   }
 });
+*/
 
-// app.get("/foods", async (req, res) => {
-//   if (req.query.foodname) {
-//     res.json({ data: await searchFoods(req.query.foodname) });
-//   } else {
-//     res.json({ data: await readFoods() });
-//   }
-// });
+app.get("/foods", async (req, res) => {
+  if (!req.query.foodname) {
+    res.json({ data: await readFoods() });
+  } else {
+    res.json({ data: await searchFoods(req.query.foodname) });
+  }
+});
 
 app.get("/foods/:foodid", async (req, res) => {
   const foodid = req.params.foodid;

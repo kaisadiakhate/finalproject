@@ -37,8 +37,7 @@ async function readFoods() {
 }
 async function searchFoods(foodname) {
   const res = await pool.query(
-    `
-  SELECT
+    `SELECT
     foodname,
     foodnutrientvalues.foodid,
     MAX(bestloc) FILTER (WHERE eufdname = 'ENERC') AS "ENERC",
@@ -122,39 +121,6 @@ async function readDiary() {
 async function deleteMeal(mealid) {
   await pool.query(`DELETE FROM meals WHERE meal_id = $1`, [mealid]);
   return;
-}
-
-async function readDiary() {
-  try {
-    const res = await pool.query(`
-    SELECT
-	    meals.meal_id,
-	    meal_date,
-      meal_name,
-      amount,
-      foodname,
-      MAX(bestloc) FILTER (WHERE eufdname = 'ENERC') AS "ENERC",
-      MAX(bestloc) FILTER (WHERE eufdname = 'PROT') AS "PROT",
-      MAX(bestloc) FILTER (WHERE eufdname = 'CHOAVL') AS "CHOAVL",
-      MAX(bestloc) FILTER (WHERE eufdname = 'FAT') AS "FAT"
-    FROM meals
-    JOIN meal_contents
-      ON meal_contents.meal_id = meals.meal_id 
-    JOIN foods
-      ON foods.foodid = meal_contents.foodid
-    JOIN foodnutrientvalues
-      ON foods.foodid = foodnutrientvalues.foodid 
-    GROUP BY 
-      meals.meal_id,
-      meal_date,
-      meal_name,
-      amount,
-      foodname;`);
-    console.log(res.rows);
-    return res.rows;
-  } catch (err) {
-    console.log(err?.stack);
-  }
 }
 
 module.exports = {
