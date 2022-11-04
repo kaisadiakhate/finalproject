@@ -27,12 +27,12 @@ export default function BasicCard(props) {
           {props.data.meal_date}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          {props.data.meal_name}
+          {props.meal_name}
         </Typography>
         <Typography variant="body2">
-          {props.data.amount}
+          {props.amount}
           <br />
-          {props.data.foodname}
+          {props.foodname}
         </Typography>
       </CardContent>
       <CardActions>
