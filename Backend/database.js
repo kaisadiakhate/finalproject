@@ -67,12 +67,29 @@ async function createFood(meal) {
 async function readDiary() {
   try {
     const res = await pool.query(`
-    select meals.meal_id, meal_date, meal_name, amount, foodname
-    from meals
-    join meal_contents
-    on meal_contents.meal_id = meals.meal_id 
-    join foods
-    on foods.foodid = meal_contents.foodid`);
+    SELECT
+	    meals.meal_id,
+	    meal_date,
+      meal_name,
+      amount,
+      foodname,
+      MAX(bestloc) FILTER (WHERE eufdname = 'ENERC') AS "ENERC",
+      MAX(bestloc) FILTER (WHERE eufdname = 'PROT') AS "PROT",
+      MAX(bestloc) FILTER (WHERE eufdname = 'CHOAVL') AS "CHOAVL",
+      MAX(bestloc) FILTER (WHERE eufdname = 'FAT') AS "FAT"
+    FROM meals
+    JOIN meal_contents
+      ON meal_contents.meal_id = meals.meal_id 
+    JOIN foods
+      ON foods.foodid = meal_contents.foodid
+    JOIN foodnutrientvalues
+      ON foods.foodid = foodnutrientvalues.foodid 
+    GROUP BY 
+      meals.meal_id,
+      meal_date,
+      meal_name,
+      amount,
+      foodname;`);
     console.log(res.rows);
     return res.rows;
   } catch (err) {
