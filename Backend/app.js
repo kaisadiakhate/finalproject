@@ -8,11 +8,13 @@ const {
   createFood,
   readDiary,
   deleteMeal,
+  searchFoods,
 } = require("./database");
 
 app.use(cors());
 app.use(express.json());
 
+/*
 app.get("/foods", async (req, res) => {
   try {
     const food = await readFoods();
@@ -20,6 +22,15 @@ app.get("/foods", async (req, res) => {
     res.send(response);
   } catch (err) {
     console.log(err?.stack);
+  }
+});
+*/
+
+app.get("/foods", async (req, res) => {
+  if (req.query.foodname) {
+    res.json({ data: await searchFoods(req.query.foodname) });
+  } else {
+    res.json({ data: await readFoods() });
   }
 });
 
