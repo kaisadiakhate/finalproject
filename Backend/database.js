@@ -1,14 +1,14 @@
-const dotenv = require("dotenv");
-dotenv.config();
+const dotenv = require("dotenv")
+dotenv.config()
 
-const { Pool } = require("pg");
+const { Pool } = require("pg")
 const pool = new Pool({
   user: process.env.user,
   host: process.env.host,
   database: process.env.database,
   password: process.env.password,
   port: 5432,
-});
+})
 
 async function readFoods() {
   try {
@@ -28,11 +28,11 @@ async function readFoods() {
         foods.foodname
       ORDER BY
         foodid;`
-    );
-    console.log("OK:", res.rows[0]);
-    return res.rows;
+    )
+    console.log("OK:", res.rows[0])
+    return res.rows
   } catch (err) {
-    console.log(err?.stack);
+    console.log(err?.stack)
   }
 }
 async function searchFoods(foodname) {
@@ -53,8 +53,8 @@ async function searchFoods(foodname) {
     foods.foodname
   ORDER BY
     foodid;`[`%${foodname.toUpperCase()}%`]
-  );
-  return res.rows;
+  )
+  return res.rows
 }
 
 async function readFoodId(foodid) {
@@ -66,10 +66,10 @@ async function readFoodId(foodid) {
       where foods.foodid = $1 
       and (eufdname = 'ENERC' or eufdname = 'FAT' or eufdname = 'CHOAVL' or eufdname = 'PROT' or eufdname = 'SUGAR')`,
       [foodid]
-    );
-    return res.rows;
+    )
+    return res.rows
   } catch (err) {
-    console.log(err?.stack);
+    console.log(err?.stack)
   }
 }
 
@@ -82,7 +82,7 @@ async function createFood(meal) {
       VALUES
           ((select meal_id from current_meal), $2, $3)`,
     [meal.meal_name, meal.foodid, meal.amount]
-  );
+  )
 }
 
 async function readDiary() {
@@ -110,17 +110,17 @@ async function readDiary() {
       meal_date,
       meal_name,
       amount,
-      foodname;`);
-    console.log(res.rows);
-    return res.rows;
+      foodname;`)
+    console.log(res.rows)
+    return res.rows
   } catch (err) {
-    console.log(err?.stack);
+    console.log(err?.stack)
   }
 }
 
 async function deleteMeal(mealid) {
-  await pool.query(`DELETE FROM meals WHERE meal_id = $1`, [mealid]);
-  return;
+  await pool.query(`DELETE FROM meals WHERE meal_id = $1`, [mealid])
+  return
 }
 
 async function readDiary() {
@@ -148,12 +148,19 @@ async function readDiary() {
       meal_date,
       meal_name,
       amount,
-      foodname;`);
-    console.log(res.rows);
-    return res.rows;
+      foodname;`)
+    console.log(res.rows)
+    return res.rows
   } catch (err) {
-    console.log(err?.stack);
+    console.log(err?.stack)
   }
 }
 
-module.exports = { readFoods, readFoodId, createFood, readDiary, deleteMeal };
+module.exports = {
+  readFoods,
+  readFoodId,
+  createFood,
+  readDiary,
+  deleteMeal,
+  searchFoods,
+}
