@@ -11,7 +11,7 @@ export default function AddProductPage() {
       component="form"
       onSubmit={handleSubmit((data) => {
         setData(JSON.stringify(data));
-        fetch("http://localhost:4000/store/vegetables", {
+        fetch("http://localhost:4000/addmeal", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
@@ -23,10 +23,15 @@ export default function AddProductPage() {
       noValidate
       autoComplete="off"
     >
-      <TextField {...register("name")} label="Name" variant="outlined" />
-      <TextField {...register("price")} label="Price" variant="outlined" />
+      <TextField {...register("meal_name")} label="Ateria" variant="outlined" />
+      <TextField
+        {...register("foodname")}
+        label="Ruokalaji"
+        variant="outlined"
+      />
+      <TextField {...register("amount")} label="Määrä" variant="outlined" />
       <Button type="submit" variant="contained">
-        Add
+        Lisää
       </Button>
     </Box>
   );

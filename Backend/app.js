@@ -29,7 +29,7 @@ app.get("/foods/:foodid", async (req, res) => {
   res.json(await readFoodId(foodid));
 });
 
-app.post("/meals", async (req, res) => {
+app.post("/addmeal", async (req, res) => {
   await createFood(req.body);
   res.sendStatus(200);
 });

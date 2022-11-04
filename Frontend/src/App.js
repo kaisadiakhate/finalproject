@@ -1,12 +1,13 @@
-import React from "react"
-import "./App.css"
-import { createBrowserRouter, RouterProvider, Route } from "react-router-dom"
-import { Box, Container } from "@mui/material"
-import Grid from "@mui/material/Unstable_Grid2"
-import Menu from "./Menu"
-import FrontPage from "./pages/FrontPage"
-import FoodsPage from "./pages/FoodsPage"
-import MealsPage from "./pages/MealsPage"
+import React from "react";
+import "./App.css";
+import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import { Box, Container } from "@mui/material";
+import Grid from "@mui/material/Unstable_Grid2";
+import Menu from "./Menu";
+import FrontPage from "./pages/FrontPage";
+import FoodsPage from "./pages/FoodsPage";
+import MealsPage from "./pages/MealsPage";
+import AddMealPage from "./pages/AddMealPage";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,11 @@ const router = createBrowserRouter([
     path: "/meals",
     element: <MealsPage />,
   },
-])
+  {
+    path: "/addmeal",
+    element: <AddMealPage />,
+  },
+]);
 
 function App() {
   return (
@@ -41,7 +46,7 @@ function App() {
         </Grid>
       </Container>
     </React.StrictMode>
-  )
+  );
 }
 
-export default App
+export default App;
