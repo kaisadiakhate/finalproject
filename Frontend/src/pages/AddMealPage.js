@@ -24,11 +24,7 @@ export default function AddProductPage() {
       autoComplete="off"
     >
       <TextField {...register("meal_name")} label="Ateria" variant="outlined" />
-      <TextField
-        {...register("foodname")}
-        label="Ruokalaji"
-        variant="outlined"
-      />
+      <TextField {...register("foodid")} label="Ruokalaji" variant="outlined" />
       <TextField {...register("amount")} label="Määrä" variant="outlined" />
       <Button type="submit" variant="contained">
         Lisää
