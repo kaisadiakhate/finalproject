@@ -1,23 +1,23 @@
-import * as React from "react"
-import Table from "@mui/material/Table"
-import TableBody from "@mui/material/TableBody"
-import TableCell from "@mui/material/TableCell"
-import TableContainer from "@mui/material/TableContainer"
-import TableHead from "@mui/material/TableHead"
-import TableRow from "@mui/material/TableRow"
-import Paper from "@mui/material/Paper"
-import Checkbox from "@mui/material/Checkbox"
+import * as React from "react";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import Checkbox from "@mui/material/Checkbox";
 
-export default function BasicTable(props) {
-  const [selectedFood, setSelectedFood] = React.useState([])
+export default function AddMealTable(props) {
+  const [selectedFood, setSelectedFood] = React.useState([]);
 
   function checkFood(food) {
     if (selectedFood.find((f) => food.foodname === f.foodname)) {
-      setSelectedFood(selectedFood.filter((f) => f.foodname !== food.foodname))
+      setSelectedFood(selectedFood.filter((f) => f.foodname !== food.foodname));
     } else {
-      setSelectedFood([...selectedFood, food])
+      setSelectedFood([...selectedFood, food]);
     }
-    console.log(selectedFood)
+    console.log(selectedFood);
   }
   return (
     <>
@@ -42,7 +42,7 @@ export default function BasicTable(props) {
                 <TableCell padding="checkbox">
                   <Checkbox
                     onChange={() => {
-                      checkFood(row)
+                      checkFood(row);
                     }}
                     color="primary"
                   />
@@ -62,10 +62,10 @@ export default function BasicTable(props) {
       <p>
         <ul>
           {selectedFood.map((food) => {
-            return <li>{food.foodname}</li>
+            return <li>{food.foodname}</li>;
           })}
         </ul>
       </p>
     </>
-  )
+  );
 }

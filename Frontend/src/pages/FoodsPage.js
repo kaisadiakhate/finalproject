@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import PriceNameTable from "../components/PriceNameTable";
+import FoodsTable from "../components/FoodsTable";
 import SearchBar from "../components/SearchBar";
 
 export default function FoodsPage() {
@@ -27,7 +27,7 @@ export default function FoodsPage() {
   return (
     <div>
       <SearchBar searchCallback={fetchData} />
-      <PriceNameTable rows={data} />
+      <FoodsTable rows={data} />
     </div>
   );
 }
