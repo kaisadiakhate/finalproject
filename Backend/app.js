@@ -48,7 +48,19 @@ app.post("/addmeal", async (req, res) => {
 app.get("/meals", async (req, res) => {
   try {
     const diary = await readDiary();
-    const response = { data: diary };
+    const sortByMeal = diary.reduce((carry, current) => {
+      const { meal_id, meal_date, meal_name, ...food } = current;
+      let el = carry.find(
+        (item) => item.meal_id === meal_id && meal_date === current.meal_date
+      );
+      if (!el) {
+        el = { meal_id, meal_date, meal_name, foods: [] };
+        carry.push(el);
+      }
+      el.foods.push({ ...food });
+      return carry;
+    }, []);
+    const response = { data: sortByMeal };
     res.send(response);
   } catch (err) {
     console.log(err?.stack);
