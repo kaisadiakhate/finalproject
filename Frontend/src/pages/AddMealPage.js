@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import AddMealTable from "../components/AddMealTable";
 import AddMealBox from "../components/AddMealBox";
 import SearchBar from "../components/SearchBar";
@@ -27,7 +28,6 @@ export default function AddMealPage() {
 
   return (
     <div>
-      <AddMealBox></AddMealBox>
       <SearchBar searchCallback={fetchData} />
       <AddMealTable rows={data} />
     </div>

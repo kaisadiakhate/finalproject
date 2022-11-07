@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -59,13 +59,35 @@ export default function AddMealTable(props) {
           </TableBody>
         </Table>
       </TableContainer>
-      <p>
-        <ul>
-          {selectedFood.map((food) => {
-            return <li>{food.foodname}</li>;
-          })}
-        </ul>
-      </p>
+      {selectedFood.length > 0 && (
+        <form
+          onSubmit={(data) => {
+            fetch("http://localhost:4000/addmeal", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({}),
+            });
+          }}
+        >
+          <p>
+            <select>
+              <option>Aamupala</option>
+              <option>Lounas</option>
+              <option>Illallinen</option>
+            </select>
+            <ul>
+              {selectedFood.map((food) => {
+                return (
+                  <li>
+                    {food.foodname} <input placeholder="Määrä /100 g"></input>
+                  </li>
+                );
+              })}
+            </ul>
+            <input type="submit" value="Lisää" />
+          </p>
+        </form>
+      )}
     </>
   );
 }
