@@ -4,6 +4,7 @@ import List from "@mui/material/List"
 import ListItem from "@mui/material/ListItem"
 import ListItemButton from "@mui/material/ListItemButton"
 import ListItemText from "@mui/material/ListItemText"
+import FoodBankIcon from "@mui/icons-material/FoodBank"
 
 export default function Menu() {
   return (
@@ -14,6 +15,7 @@ export default function Menu() {
             <ListItem disablePadding>
               <ListItemButton component="a" href="/">
                 <ListItemText primary="Etusivu" />
+                <FoodBankIcon />
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
