@@ -29,7 +29,8 @@ export default function BasicTable(props) {
             >
               <TableCell padding="checkbox"></TableCell>
               <TableCell component="th" scope="row">
-                {row.foodname}
+                {row.foodname[0].toUpperCase() +
+                  row.foodname.slice(1).toLowerCase()}
               </TableCell>
               <TableCell align="right">{row.ENERC}</TableCell>
               <TableCell align="right">{row.PROT}</TableCell>

@@ -1,29 +1,29 @@
-import React, { useState } from "react"
-import Table from "@mui/material/Table"
-import TableBody from "@mui/material/TableBody"
-import TableCell from "@mui/material/TableCell"
-import TableContainer from "@mui/material/TableContainer"
-import TableHead from "@mui/material/TableHead"
-import TableRow from "@mui/material/TableRow"
-import Paper from "@mui/material/Paper"
-import Checkbox from "@mui/material/Checkbox"
-import { useForm } from "react-hook-form"
+import React, { useState } from "react";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import Checkbox from "@mui/material/Checkbox";
+import { useForm } from "react-hook-form";
 
 export default function AddMealTable(props) {
-  const { register, handleSubmit } = useForm()
-  const [selectedFood, setSelectedFood] = React.useState([])
+  const { register, handleSubmit } = useForm();
+  const [selectedFood, setSelectedFood] = React.useState([]);
 
   const onSubmit = (data) => {
-    console.log("Received on submit:", data)
-  }
+    console.log("Received on submit:", data);
+  };
 
   function checkFood(food) {
     if (selectedFood.find((f) => food.foodname === f.foodname)) {
-      setSelectedFood(selectedFood.filter((f) => f.foodname !== food.foodname))
+      setSelectedFood(selectedFood.filter((f) => f.foodname !== food.foodname));
     } else {
-      setSelectedFood([...selectedFood, food])
+      setSelectedFood([...selectedFood, food]);
     }
-    console.log(selectedFood)
+    console.log(selectedFood);
   }
   return (
     <>
@@ -48,13 +48,14 @@ export default function AddMealTable(props) {
                 <TableCell padding="checkbox">
                   <Checkbox
                     onChange={() => {
-                      checkFood(row)
+                      checkFood(row);
                     }}
                     color="primary"
                   />
                 </TableCell>
                 <TableCell component="th" scope="row">
-                  {row.foodname}
+                  {row.foodname[0].toUpperCase() +
+                    row.foodname.slice(1).toLowerCase()}
                 </TableCell>
                 <TableCell align="right">{row.ENERC}</TableCell>
                 <TableCell align="right">{row.PROT}</TableCell>
@@ -68,12 +69,12 @@ export default function AddMealTable(props) {
       {selectedFood.length > 0 && (
         <form
           onSubmit={handleSubmit((data) => {
-            console.log(data)
+            console.log(data);
             fetch("http://localhost:4000/addmeal", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(data),
-            })
+            });
           })}
         >
           <p>
@@ -107,7 +108,7 @@ export default function AddMealTable(props) {
                       placeholder="Quantity"
                     ></input>
                   </li>
-                )
+                );
               })}
             </ul>
             <input type="submit" value="Lisää" />
@@ -115,5 +116,5 @@ export default function AddMealTable(props) {
         </form>
       )}
     </>
-  )
+  );
 }
