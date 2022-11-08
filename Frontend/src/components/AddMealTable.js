@@ -90,19 +90,19 @@ export default function AddMealTable(props) {
                     {food.foodname}{" "}
                     <input
                       type="hidden"
-                      {...register(`selectedFood.${index}.foodid`, {
+                      {...register("foodid", {
                         valueAsNumber: true,
                       })}
                       value={food.foodid}
                     />
                     <input
                       type="hidden"
-                      {...register(`selectedFood.${index}.foodname`)}
+                      {...register("foodname")}
                       value={food.foodname}
                     />
                     <input
                       type="number"
-                      {...register(`selectedFood.${index}.amount`, {
+                      {...register("amount", {
                         valueAsNumber: true,
                       })}
                       placeholder="Quantity"
