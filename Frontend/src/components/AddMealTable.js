@@ -67,13 +67,14 @@ export default function AddMealTable(props) {
       </TableContainer>
       {selectedFood.length > 0 && (
         <form
-          onSubmit={(data) => {
+          onSubmit={handleSubmit((data) => {
+            console.log(data)
             fetch("http://localhost:4000/addmeal", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(data),
             })
-          }}
+          })}
         >
           <p>
             <select {...register("meal_name")}>
@@ -82,13 +83,27 @@ export default function AddMealTable(props) {
               <option>Illallinen</option>
             </select>
             <ul>
-              {selectedFood.map((food) => {
+              {selectedFood.map((food, index) => {
                 return (
-                  <li key={food.foodname}>
+                  <li key={food.foodid}>
                     {food.foodname}{" "}
                     <input
+                      type="hidden"
+                      {...register(`selectedFood.${index}.foodid`, {
+                        valueAsNumber: true,
+                      })}
+                      value={food.foodid}
+                    />
+                    <input
+                      type="hidden"
+                      {...register(`selectedFood.${index}.foodname`)}
+                      value={food.foodname}
+                    />
+                    <input
                       type="number"
-                      {...register(`selectedFood.${food.foodname}`)}
+                      {...register(`selectedFood.${index}.amount`, {
+                        valueAsNumber: true,
+                      })}
                       placeholder="Quantity"
                     ></input>
                   </li>
