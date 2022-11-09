@@ -57,7 +57,7 @@ app.get("/meals", async (req, res) => {
         el = { meal_id, meal_date, meal_name, foods: [] };
         carry.push(el);
       }
-      el.foods.push({ ...food });
+      el.foods.push({ meal_id, ...food });
       return carry;
     }, []);
     const response = { data: sortByMeal };
