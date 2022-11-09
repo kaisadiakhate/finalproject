@@ -82,10 +82,10 @@ export default function AddMealTable(props) {
             <TableRow>
               <Table></Table>
               <TableCell>Foodname (100g serving)</TableCell>
-              <TableCell align="right">Kokonaisenergia(kJ)</TableCell>
-              <TableCell align="right">Proteiini(g)</TableCell>
-              <TableCell align="right">Hiilarit(g)</TableCell>
-              <TableCell align="right">Rasva(g)</TableCell>
+              <TableCell align="right">Kokonaisenergia (kcal)</TableCell>
+              <TableCell align="right">Proteiini (g)</TableCell>
+              <TableCell align="right">Hiilarit (g)</TableCell>
+              <TableCell align="right">Rasva (g)</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -106,7 +106,9 @@ export default function AddMealTable(props) {
                   {row.foodname[0].toUpperCase() +
                     row.foodname.slice(1).toLowerCase()}
                 </TableCell>
-                <TableCell align="right">{row.ENERC}</TableCell>
+                <TableCell align="right">
+                  {(Number(row.ENERC) / 4.18).toFixed(0)}
+                </TableCell>
                 <TableCell align="right">{row.PROT}</TableCell>
                 <TableCell align="right">{row.CHOAVL}</TableCell>
                 <TableCell align="right">{row.FAT}</TableCell>
