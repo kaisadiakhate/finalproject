@@ -1,11 +1,11 @@
-import * as React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import * as React from "react"
+import Table from "@mui/material/Table"
+import TableBody from "@mui/material/TableBody"
+import TableCell from "@mui/material/TableCell"
+import TableContainer from "@mui/material/TableContainer"
+import TableHead from "@mui/material/TableHead"
+import TableRow from "@mui/material/TableRow"
+import Paper from "@mui/material/Paper"
 
 export default function BasicTable(props) {
   return (
@@ -15,10 +15,10 @@ export default function BasicTable(props) {
           <TableRow>
             <Table></Table>
             <TableCell>Foodname (100g serving)</TableCell>
-            <TableCell align="right">Kokonaisenergia(kJ)</TableCell>
-            <TableCell align="right">Proteiini(g)</TableCell>
-            <TableCell align="right">Hiilarit(g)</TableCell>
-            <TableCell align="right">Rasva(g)</TableCell>
+            <TableCell align="right">Kokonaisenergia (kcal)</TableCell>
+            <TableCell align="right">Proteiini (g)</TableCell>
+            <TableCell align="right">Hiilarit (g)</TableCell>
+            <TableCell align="right">Rasva (g)</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -32,7 +32,9 @@ export default function BasicTable(props) {
                 {row.foodname[0].toUpperCase() +
                   row.foodname.slice(1).toLowerCase()}
               </TableCell>
-              <TableCell align="right">{row.ENERC}</TableCell>
+              <TableCell align="right">
+                {(Number(row.ENERC) / 4.18).toFixed(0)}
+              </TableCell>
               <TableCell align="right">{row.PROT}</TableCell>
               <TableCell align="right">{row.CHOAVL}</TableCell>
               <TableCell align="right">{row.FAT}</TableCell>
@@ -41,5 +43,5 @@ export default function BasicTable(props) {
         </TableBody>
       </Table>
     </TableContainer>
-  );
+  )
 }
