@@ -1,22 +1,26 @@
-import * as React from "react";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import DeleteIcon from "@mui/icons-material/Delete";
-import IconButton from "@mui/material/IconButton";
-import MealsTable from "./MealsTable";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableRow from "@mui/material/TableRow";
-import TableHead from "@mui/material/TableHead";
+import * as React from "react"
+import Accordion from "@mui/material/Accordion"
+import AccordionSummary from "@mui/material/AccordionSummary"
+import AccordionDetails from "@mui/material/AccordionDetails"
+import Typography from "@mui/material/Typography"
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+import List from "@mui/material/List"
+import ListItem from "@mui/material/ListItem"
+import ListItemText from "@mui/material/ListItemText"
+import DeleteIcon from "@mui/icons-material/Delete"
+import IconButton from "@mui/material/IconButton"
+import MealsTable from "./MealsTable"
+import Table from "@mui/material/Table"
+import TableBody from "@mui/material/TableBody"
+import TableCell from "@mui/material/TableCell"
+import TableRow from "@mui/material/TableRow"
+import TableHead from "@mui/material/TableHead"
 
 export default function SimpleAccordion(props) {
+  function paivamaara(pvm) {
+    const oikein = pvm.split(".").reverse().join(".")
+    return oikein
+  }
   return (
     <div>
       {props.data.map((row) => (
@@ -27,8 +31,10 @@ export default function SimpleAccordion(props) {
             id="panel1a-header"
           >
             <Typography>
-              {row.meal_date.split("T")[0].replaceAll("-", ".")}
-              {row.meal_name[0].toUpperCase() +
+              {paivamaara(row.meal_date.split("T")[0].replaceAll("-", "."))}
+
+              {" " +
+                row.meal_name[0].toUpperCase() +
                 row.meal_name.slice(1).toLowerCase()}
             </Typography>
           </AccordionSummary>
@@ -73,5 +79,5 @@ export default function SimpleAccordion(props) {
         </Accordion>
       ))}
     </div>
-  );
+  )
 }
