@@ -97,6 +97,7 @@ async function readDiary() {
       meal_name,
       amount,
       foodname,
+      foods.foodid,
       MAX(bestloc) FILTER (WHERE eufdname = 'ENERC') AS "ENERC",
       MAX(bestloc) FILTER (WHERE eufdname = 'PROT') AS "PROT",
       MAX(bestloc) FILTER (WHERE eufdname = 'CHOAVL') AS "CHOAVL",
@@ -112,6 +113,7 @@ async function readDiary() {
       meals.meal_id,
       meal_date,
       meal_name,
+      foods.foodid,
       amount,
       foodname;`);
     console.log(res.rows);
