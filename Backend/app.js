@@ -9,6 +9,7 @@ const {
   readDiary,
   deleteMeal,
   searchFoods,
+  readMealId,
 } = require("./database");
 
 app.use(cors());
@@ -67,8 +68,14 @@ app.get("/meals", async (req, res) => {
   }
 });
 
-app.delete("/meals/:meal_id", async (req, res) => {
-  await deleteMeal(req.params.meal_id);
+app.get("/meals/:meal_id", async (req, res) => {
+  const mealid = req.params.meal_id;
+  console.log(`Asked for mealid ${mealid}`);
+  res.json(await readMealId(mealid));
+});
+
+app.delete("/meals/:meal_id/:foodid", async (req, res) => {
+  await deleteMeal(req.params.meal_id, req.params.foodid);
   res.sendStatus(200);
 });
 

@@ -1,25 +1,21 @@
-import * as React from "react"
-import Accordion from "@mui/material/Accordion"
-import AccordionSummary from "@mui/material/AccordionSummary"
-import AccordionDetails from "@mui/material/AccordionDetails"
-import Typography from "@mui/material/Typography"
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
-import List from "@mui/material/List"
-import ListItem from "@mui/material/ListItem"
-import ListItemText from "@mui/material/ListItemText"
-import DeleteIcon from "@mui/icons-material/Delete"
-import IconButton from "@mui/material/IconButton"
-import MealsTable from "./MealsTable"
-import Table from "@mui/material/Table"
-import TableBody from "@mui/material/TableBody"
-import TableCell from "@mui/material/TableCell"
-import TableRow from "@mui/material/TableRow"
-import TableHead from "@mui/material/TableHead"
+import * as React from "react";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import Typography from "@mui/material/Typography";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import DeleteIcon from "@mui/icons-material/Delete";
+import IconButton from "@mui/material/IconButton";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableRow from "@mui/material/TableRow";
+import TableHead from "@mui/material/TableHead";
 
 export default function SimpleAccordion(props) {
   function paivamaara(pvm) {
-    const oikein = pvm.split(".").reverse().join(".")
-    return oikein
+    const oikein = pvm.split(".").reverse().join(".");
+    return oikein;
   }
   return (
     <div>
@@ -63,6 +59,24 @@ export default function SimpleAccordion(props) {
                     <TableCell align="right">{row.PROT}</TableCell>
                     <TableCell align="right">{row.CHOAVL}</TableCell>
                     <TableCell align="right">{row.FAT}</TableCell>
+                    <TableCell>
+                      <IconButton
+                        onClick={async () => {
+                          await fetch(
+                            `http://localhost:4000/meals/${row.meal_id}/${row.foodid}`,
+                            {
+                              method: "DELETE",
+                              headers: { "Content-Type": "application/json" },
+                            }
+                          );
+                        }}
+                        edge="end"
+                        aria-label="delete"
+                        size="small"
+                      >
+                        <DeleteIcon />
+                      </IconButton>
+                    </TableCell>
                   </TableRow>
                 ))}
                 <TableRow key={"yhteensä"}>
@@ -79,5 +93,5 @@ export default function SimpleAccordion(props) {
         </Accordion>
       ))}
     </div>
-  )
+  );
 }

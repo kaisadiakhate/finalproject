@@ -123,9 +123,23 @@ async function readDiary() {
   }
 }
 
-async function deleteMeal(mealid) {
-  await pool.query(`DELETE FROM meals WHERE meal_id = $1`, [mealid]);
+async function deleteMeal(mealid, foodid) {
+  await pool.query(
+    `DELETE FROM meal_contents WHERE meal_id = $1 AND foodid=$2`,
+    [mealid, foodid]
+  );
   return;
+}
+
+async function readMealId(mealid) {
+  try {
+    const res = await pool.query(`SELECT * FROM meals where meal_id=$1`, [
+      mealid,
+    ]);
+    return res.rows;
+  } catch (err) {
+    console.log(err?.stack);
+  }
 }
 
 module.exports = {
@@ -135,4 +149,5 @@ module.exports = {
   readDiary,
   deleteMeal,
   searchFoods,
+  readMealId,
 };
