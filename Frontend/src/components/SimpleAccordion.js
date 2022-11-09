@@ -69,6 +69,7 @@ export default function SimpleAccordion(props) {
                               headers: { "Content-Type": "application/json" },
                             }
                           );
+                          props.fetchData();
                         }}
                         edge="end"
                         aria-label="delete"

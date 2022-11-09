@@ -23,7 +23,7 @@ export default function MealsPage() {
   return (
     <div>
       <h2>Kaikki ateriat</h2>
-      <SimpleAccordion data={data} />
+      <SimpleAccordion data={data} fetchData={fetchData} />
     </div>
   );
 }
