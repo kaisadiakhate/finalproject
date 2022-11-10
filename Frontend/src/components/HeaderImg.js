@@ -1,4 +1,6 @@
 import React from "react";
+import Paper from "@mui/material/Paper";
+import Stack from "@mui/material/Stack";
 
 export const HeaderImg = ({ title, subTitle }) => {
   return (
@@ -12,10 +14,32 @@ export const HeaderImg = ({ title, subTitle }) => {
           height: "280px",
         }}
       >
-        <div className="container" style={{ minHeight: "550px" }}>
-          <div className="text-center justify-content-center align-self-center">
-            <h1 className="pt-5 pb-3">{title}</h1>
-            <h5>{subTitle}</h5>
+        <div
+          style={{
+            display: "flex",
+            flex: 1,
+            flexDirection: "row",
+            justifyContent: "center",
+            alignContent: "center",
+            alignItems: "center",
+            height: "100%",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              flex: 1,
+              color: "white",
+              fontSize: "30px",
+              fontWeight: "bold",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignContent: "center",
+              alignItems: "center",
+              paddingTop: "70px",
+            }}
+          >
+            {title}
           </div>
         </div>
       </div>

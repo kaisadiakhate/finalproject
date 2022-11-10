@@ -23,8 +23,8 @@ export default function Menu(props) {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton component="a" href="Seuranta">
-            <ListItemText primary="Meals" />
+          <ListItemButton component="a" href="meals">
+            <ListItemText primary="Seuranta" />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
@@ -51,8 +51,8 @@ export default function Menu(props) {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton component="a" href="Seuranta">
-            <ListItemText primary="Meals" />
+          <ListItemButton component="a" href="meals">
+            <ListItemText primary="Seuranta" />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>

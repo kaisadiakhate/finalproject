@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import MealsTable from "../components/MealsTable";
 import SimpleAccordion from "../components/SimpleAccordion";
 
 export default function MealsPage() {
