@@ -28,7 +28,8 @@ export default function SimpleAccordion(props) {
           >
             <Typography>
               {paivamaara(row.meal_date.split("T")[0].replaceAll("-", "."))}
-
+            </Typography>
+            <Typography>
               {" " +
                 row.meal_name[0].toUpperCase() +
                 row.meal_name.slice(1).toLowerCase()}

@@ -1,13 +1,16 @@
-import * as React from "react"
-import Container from "@mui/material/Container"
-import { useState } from "react"
+import * as React from "react";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import { useState } from "react";
 
 export default function SearchBar(props) {
-  const [inputValue, setInputValue] = useState("")
+  const [inputValue, setInputValue] = useState("");
 
   return (
     <Container className="my-4">
-      <h2>Hae tietokannasta ruokaa tai raaka-ainetta</h2>
+      <Typography variant="h5" variantMapping="h2">
+        Hae tietokannasta ruokaa tai raaka-ainetta
+      </Typography>
       <input
         type="text"
         onChange={(e) => setInputValue(e.target.value)}
@@ -15,5 +18,5 @@ export default function SearchBar(props) {
 
       <button onClick={(e) => props.searchCallback(inputValue)}>Hae</button>
     </Container>
-  )
+  );
 }

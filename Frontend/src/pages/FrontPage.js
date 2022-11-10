@@ -19,11 +19,11 @@ export default function FrontPage() {
 
   return (
     <div className="background">
-        <h3 sx={{ m: 20 }}>Ruokapäiväkirja {dashboard.dailyCalorieCount}</h3>
-        <div>Kirjaa ylös päivittäiset ravinto-aineet ja kalorit</div>
-        <span
-          style={{ display: "flex", justifyContent: "center", margin: "5%" }}
-        ></span>
+      <h3 sx={{ m: 20 }}>Ruokapäiväkirja {dashboard.dailyCalorieCount}</h3>
+      <div>Kirjaa ylös päivittäiset ravinto-aineet ja kalorit</div>
+      <span
+        style={{ display: "flex", justifyContent: "center", margin: "5%" }}
+      ></span>
     </div>
   );
 }

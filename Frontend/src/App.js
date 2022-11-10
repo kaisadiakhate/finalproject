@@ -1,32 +1,39 @@
-import React from "react"
-import "./App.css"
-import { createBrowserRouter, RouterProvider, Route } from "react-router-dom"
-import { Box, Container } from "@mui/material"
-import Grid from "@mui/material/Unstable_Grid2"
-import Menu from "./Menu"
-import FrontPage from "./pages/FrontPage"
-import FoodsPage from "./pages/FoodsPage"
-import MealsPage from "./pages/MealsPage"
-import AddMealPage from "./pages/AddMealPage"
+import React from "react";
+import "./App.css";
+import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import { Box, Container } from "@mui/material";
+import Grid from "@mui/material/Unstable_Grid2";
+import Menu from "./Menu";
+import FrontPage from "./pages/FrontPage";
+import FoodsPage from "./pages/FoodsPage";
+import MealsPage from "./pages/MealsPage";
+import AddMealPage from "./pages/AddMealPage";
+import "./components/HeaderImg";
+import { HeaderImg } from "./components/HeaderImg";
+//import "bootstrap/dist/css/bootstrap.min.css";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <FrontPage />,
+    element: (
+      <PageContainer menuType="horizontal" pageComponent={<FrontPage />} />
+    ),
   },
   {
     path: "/foods",
-    element: <FoodsPage />,
+    element: <PageContainer pageComponent={<FoodsPage />} />,
   },
   {
     path: "/meals",
-    element: <MealsPage />,
+    element: <PageContainer pageComponent={<MealsPage />} />,
   },
   {
     path: "/addmeal",
-    element: <AddMealPage />,
+    element: <PageContainer pageComponent={<AddMealPage />} />,
   },
-])
+]);
+
+/*
 
 function App() {
   return (
@@ -48,5 +55,36 @@ function App() {
     </React.StrictMode>
   )
 }
+*/
 
-export default App
+function PageContainer(props) {
+  return (
+    <>
+      <Grid container spacing={2}>
+        <Grid xs={12}>
+          <HeaderImg title="Ruokapäiväkirja" />
+        </Grid>
+        <Grid xs={props.menuType === "horizontal" ? 12 : 2}>
+          <Menu menuType={props.menuType} />
+        </Grid>
+        <Grid xs={props.menuType === "horizontal" ? 12 : 10}>
+          <Box sx={{ bgcolor: "background.paper", p: 0.5 }}>
+            {props.pageComponent}
+          </Box>
+        </Grid>
+      </Grid>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <div id="home-page">
+      <Container maxWidth="lg">
+        <RouterProvider router={router} />
+      </Container>
+    </div>
+  );
+}
+
+export default App;
