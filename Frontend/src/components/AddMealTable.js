@@ -43,12 +43,14 @@ export default function AddMealTable(props) {
               <option>Aamupala</option>
               <option>Lounas</option>
               <option>Illallinen</option>
+              <option>Välipala</option>
             </select>
             <ul>
               {selectedFood.map((food, index) => {
                 return (
                   <li key={food.foodid}>
-                    {food.foodname}{" "}
+                    {food.foodname[0].toUpperCase() +
+                      food.foodname.slice(1).toLowerCase()}{" "}
                     <input
                       type="hidden"
                       {...register(`${index}.foodid`, {
@@ -66,7 +68,7 @@ export default function AddMealTable(props) {
                       {...register(`${index}.amount`, {
                         valueAsNumber: true,
                       })}
-                      placeholder="Quantity"
+                      placeholder="Määrä /100g"
                     ></input>
                   </li>
                 );
