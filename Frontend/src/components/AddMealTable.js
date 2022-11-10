@@ -81,7 +81,7 @@ export default function AddMealTable(props) {
           <TableHead>
             <TableRow>
               <Table></Table>
-              <TableCell>Foodname (100g serving)</TableCell>
+              <TableCell>Ruoka (100g)</TableCell>
               <TableCell align="right">Kokonaisenergia (kcal)</TableCell>
               <TableCell align="right">Proteiini (g)</TableCell>
               <TableCell align="right">Hiilarit (g)</TableCell>

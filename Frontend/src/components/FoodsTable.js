@@ -1,11 +1,11 @@
-import * as React from "react"
-import Table from "@mui/material/Table"
-import TableBody from "@mui/material/TableBody"
-import TableCell from "@mui/material/TableCell"
-import TableContainer from "@mui/material/TableContainer"
-import TableHead from "@mui/material/TableHead"
-import TableRow from "@mui/material/TableRow"
-import Paper from "@mui/material/Paper"
+import * as React from "react";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
 export default function BasicTable(props) {
   return (
@@ -14,7 +14,7 @@ export default function BasicTable(props) {
         <TableHead>
           <TableRow>
             <Table></Table>
-            <TableCell>Foodname (100g serving)</TableCell>
+            <TableCell>Ruoka (100g)</TableCell>
             <TableCell align="right">Kokonaisenergia (kcal)</TableCell>
             <TableCell align="right">Proteiini (g)</TableCell>
             <TableCell align="right">Hiilarit (g)</TableCell>
@@ -43,5 +43,5 @@ export default function BasicTable(props) {
         </TableBody>
       </Table>
     </TableContainer>
-  )
+  );
 }

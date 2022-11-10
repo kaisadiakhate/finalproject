@@ -11,7 +11,7 @@ export const HeaderImg = ({ title, subTitle }) => {
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           backgroundSize: "cover",
-          height: "280px",
+          height: "300px",
         }}
       >
         <div
@@ -30,13 +30,13 @@ export const HeaderImg = ({ title, subTitle }) => {
               display: "flex",
               flex: 1,
               color: "white",
-              fontSize: "30px",
+              fontSize: "35px",
               fontWeight: "bold",
               flexDirection: "column",
               justifyContent: "center",
               alignContent: "center",
               alignItems: "center",
-              paddingTop: "70px",
+              paddingTop: "75px",
             }}
           >
             {title}

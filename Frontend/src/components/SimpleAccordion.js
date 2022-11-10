@@ -26,10 +26,15 @@ export default function SimpleAccordion(props) {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography>
+            <Typography
+              style={{
+                fontSize: "15px",
+                fontWeight: "bold",
+              }}
+            >
               {paivamaara(row.meal_date.split("T")[0].replaceAll("-", "."))}
             </Typography>
-            <Typography sx={{ pl: 1 }}>
+            <Typography sx={{ pl: 3 }}>
               {" " +
                 row.meal_name[0].toUpperCase() +
                 row.meal_name.slice(1).toLowerCase()}
