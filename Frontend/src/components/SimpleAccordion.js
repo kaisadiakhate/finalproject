@@ -12,6 +12,14 @@ import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import TableHead from "@mui/material/TableHead";
 
+function calcSum(arr, nutr) {
+  let x = 0;
+  for (const el of arr) {
+    x += el[nutr];
+  }
+  return x;
+}
+
 export default function SimpleAccordion(props) {
   function paivamaara(pvm) {
     const oikein = pvm.split(".").reverse().join(".");
@@ -88,11 +96,21 @@ export default function SimpleAccordion(props) {
                 ))}
                 <TableRow key={"yhteensä"}>
                   <TableCell align="right">Yhteensä</TableCell>
-                  <TableCell align="right">Yhteensä</TableCell>
-                  <TableCell align="right">kalorit</TableCell>
-                  <TableCell align="right">Protsku</TableCell>
-                  <TableCell align="right">hiilarit</TableCell>
-                  <TableCell align="right">rasva</TableCell>
+                  <TableCell align="right">
+                    Yhteensä{calcSum(row.foods, "amount")}
+                  </TableCell>
+                  <TableCell align="right">
+                    kalorit{calcSum(row.foods, "ENERC")}
+                  </TableCell>
+                  <TableCell align="right">
+                    Protsku{calcSum(row.foods, "PROT")}
+                  </TableCell>
+                  <TableCell align="right">
+                    hiilarit{calcSum(row.foods, "CHOAVL")}
+                  </TableCell>
+                  <TableCell align="right">
+                    rasva{calcSum(row.foods, "FAT")}
+                  </TableCell>
                 </TableRow>
               </TableBody>
             </Table>
