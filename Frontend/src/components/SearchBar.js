@@ -12,9 +12,7 @@ export default function SearchBar(props) {
         variant="h5"
         variantMapping="h2"
         style={{ paddingBottom: "50px" }}
-      >
-        Hae tietokannasta ruokaa tai raaka-ainetta
-      </Typography>
+      ></Typography>
       <input
         type="text"
         onChange={(e) => setInputValue(e.target.value)}

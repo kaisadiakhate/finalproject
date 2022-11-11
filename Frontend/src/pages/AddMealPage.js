@@ -27,6 +27,7 @@ export default function AddMealPage() {
 
   return (
     <div>
+      <h2>Lisää ateria</h2>
       <SearchBar searchCallback={fetchData} />
       <AddMealTable rows={data} />
     </div>

@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import FoodsTable from "../components/FoodsTable";
 import SearchBar from "../components/SearchBar";
@@ -26,6 +27,7 @@ export default function FoodsPage() {
 
   return (
     <div>
+      <h2>Hae tietokannasta ruokaa tai raaka-ainetta</h2>
       <SearchBar searchCallback={fetchData} />
       <FoodsTable rows={data} />
     </div>
