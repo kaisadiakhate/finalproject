@@ -21,10 +21,6 @@ function calcSum(arr, nutr) {
 }
 
 export default function SimpleAccordion(props) {
-  function paivamaara(pvm) {
-    const oikein = pvm.split(".").reverse().join(".");
-    return oikein;
-  }
   return (
     <div style={{ paddingTop: "30px" }}>
       {props.data.map((row) => (
@@ -40,7 +36,7 @@ export default function SimpleAccordion(props) {
                 fontWeight: "bold",
               }}
             >
-              {paivamaara(row.meal_date.split("T")[0].replaceAll("-", "."))}
+              {new Date(row.meal_date).toLocaleDateString("fi-FI")}
             </Typography>
             <Typography sx={{ pl: 3 }}>
               {" " +
