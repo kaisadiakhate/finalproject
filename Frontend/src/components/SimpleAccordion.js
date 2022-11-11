@@ -54,11 +54,13 @@ export default function SimpleAccordion(props) {
               <TableHead>
                 <TableRow>
                   <TableCell align="left">Ruoka</TableCell>
-                  <TableCell align="right">Määrä (100g)</TableCell>
+                  <TableCell align="right">Määrä (g)</TableCell>
                   <TableCell align="right">Energia (kcal)</TableCell>
-                  <TableCell align="right">Proteiinit</TableCell>
-                  <TableCell align="right">Kokonaishiilihydraatit</TableCell>
-                  <TableCell align="right">Rasvat</TableCell>
+                  <TableCell align="right">Proteiinit (g)</TableCell>
+                  <TableCell align="right">
+                    Kokonaishiilihydraatit (g)
+                  </TableCell>
+                  <TableCell align="right">Rasvat (g)</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -68,7 +70,7 @@ export default function SimpleAccordion(props) {
                       {row.foodname[0].toUpperCase() +
                         row.foodname.slice(1).toLowerCase()}
                     </TableCell>
-                    <TableCell align="right">{row.amount}</TableCell>
+                    <TableCell align="right">{row.amount * 100}</TableCell>
                     <TableCell align="right">
                       {(row.ENERC / 4.18).toFixed()}
                     </TableCell>
@@ -99,19 +101,19 @@ export default function SimpleAccordion(props) {
                 <TableRow key={"yhteensä"}>
                   <TableCell align="right">Yhteensä</TableCell>
                   <TableCell align="right">
-                    {calcSum(row.foods, "amount")}
+                    {calcSum(row.foods, "amount").toFixed(0) * 100}
                   </TableCell>
                   <TableCell align="right">
                     {(calcSum(row.foods, "ENERC") / 4.18).toFixed(0)}
                   </TableCell>
                   <TableCell align="right">
-                    {calcSum(row.foods, "PROT")}
+                    {calcSum(row.foods, "PROT").toFixed(2)}
                   </TableCell>
                   <TableCell align="right">
-                    {calcSum(row.foods, "CHOAVL")}
+                    {calcSum(row.foods, "CHOAVL").toFixed(2)}
                   </TableCell>
                   <TableCell align="right">
-                    {calcSum(row.foods, "FAT")}
+                    {calcSum(row.foods, "FAT").toFixed(2)}
                   </TableCell>
                 </TableRow>
               </TableBody>

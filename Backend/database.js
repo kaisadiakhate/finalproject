@@ -118,7 +118,9 @@ async function readDiary() {
       meal_name,
       foods.foodid,
       amount,
-      foodname;`);
+      foodname
+    ORDER BY
+      meal_date;`);
     console.log(res.rows);
     return res.rows;
   } catch (err) {
