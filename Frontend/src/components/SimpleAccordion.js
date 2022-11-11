@@ -55,7 +55,7 @@ export default function SimpleAccordion(props) {
                 <TableRow>
                   <TableCell align="left">Ruoka</TableCell>
                   <TableCell align="right">Määrä (100g)</TableCell>
-                  <TableCell align="right">Energia (kJ)</TableCell>
+                  <TableCell align="right">Energia (kcal)</TableCell>
                   <TableCell align="right">Proteiinit</TableCell>
                   <TableCell align="right">Kokonaishiilihydraatit</TableCell>
                   <TableCell align="right">Rasvat</TableCell>
@@ -69,7 +69,9 @@ export default function SimpleAccordion(props) {
                         row.foodname.slice(1).toLowerCase()}
                     </TableCell>
                     <TableCell align="right">{row.amount}</TableCell>
-                    <TableCell align="right">{row.ENERC}</TableCell>
+                    <TableCell align="right">
+                      {(row.ENERC / 4.18).toFixed()}
+                    </TableCell>
                     <TableCell align="right">{row.PROT}</TableCell>
                     <TableCell align="right">{row.CHOAVL}</TableCell>
                     <TableCell align="right">{row.FAT}</TableCell>
@@ -97,19 +99,19 @@ export default function SimpleAccordion(props) {
                 <TableRow key={"yhteensä"}>
                   <TableCell align="right">Yhteensä</TableCell>
                   <TableCell align="right">
-                    Yhteensä{calcSum(row.foods, "amount")}
+                    {calcSum(row.foods, "amount")}
                   </TableCell>
                   <TableCell align="right">
-                    kalorit{calcSum(row.foods, "ENERC")}
+                    {(calcSum(row.foods, "ENERC") / 4.18).toFixed(0)}
                   </TableCell>
                   <TableCell align="right">
-                    Protsku{calcSum(row.foods, "PROT")}
+                    {calcSum(row.foods, "PROT")}
                   </TableCell>
                   <TableCell align="right">
-                    hiilarit{calcSum(row.foods, "CHOAVL")}
+                    {calcSum(row.foods, "CHOAVL")}
                   </TableCell>
                   <TableCell align="right">
-                    rasva{calcSum(row.foods, "FAT")}
+                    {calcSum(row.foods, "FAT")}
                   </TableCell>
                 </TableRow>
               </TableBody>
