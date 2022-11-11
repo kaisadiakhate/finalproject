@@ -52,11 +52,11 @@ export default function SimpleAccordion(props) {
                   <TableCell align="left">Ruoka</TableCell>
                   <TableCell align="right">Määrä (g)</TableCell>
                   <TableCell align="right">Energia (kcal)</TableCell>
-                  <TableCell align="right">Proteiinit (g)</TableCell>
+                  <TableCell align="right">Proteiini (g)</TableCell>
                   <TableCell align="right">
-                    Kokonaishiilihydraatit (g)
+                    Kokonaishiilihydraatti (g)
                   </TableCell>
-                  <TableCell align="right">Rasvat (g)</TableCell>
+                  <TableCell align="right">Rasva (g)</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
