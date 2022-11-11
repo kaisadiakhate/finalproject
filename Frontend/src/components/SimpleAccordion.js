@@ -97,7 +97,7 @@ export default function SimpleAccordion(props) {
                 <TableRow key={"yhteensä"}>
                   <TableCell align="right">Yhteensä</TableCell>
                   <TableCell align="right">
-                    {calcSum(row.foods, "amount").toFixed(0) * 100}
+                    {(calcSum(row.foods, "amount") * 100).toFixed(0)}
                   </TableCell>
                   <TableCell align="right">
                     {(calcSum(row.foods, "ENERC") / 4.18).toFixed(0)}
