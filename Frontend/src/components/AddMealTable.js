@@ -65,6 +65,7 @@ export default function AddMealTable(props) {
                     />
                     <input
                       type="number"
+                      step="0.1"
                       {...register(`${index}.amount`, {
                         valueAsNumber: true,
                       })}
