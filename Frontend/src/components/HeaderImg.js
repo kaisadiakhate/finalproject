@@ -11,7 +11,7 @@ export const HeaderImg = ({ title, subTitle }) => {
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           backgroundSize: "cover",
-          height: "300px",
+          height: "350px",
         }}
       >
         <div

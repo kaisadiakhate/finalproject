@@ -26,7 +26,7 @@ export default function SimpleAccordion(props) {
     return oikein;
   }
   return (
-    <div>
+    <div style={{ paddingTop: "30px" }}>
       {props.data.map((row) => (
         <Accordion>
           <AccordionSummary
